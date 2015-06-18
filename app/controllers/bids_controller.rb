@@ -1,8 +1,9 @@
 class BidsController < ApplicationController
 
   def create
-    @bid = Bid.create!(bid_params)
+    Bid.create!(bid_params)
     @item = Item.find(params[:bid][:item_id])
+    @bid = Bid.new(item: @item, amount: @item.next_bid_amount)
   end
 
 
