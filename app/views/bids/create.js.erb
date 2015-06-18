@@ -1,2 +1,2 @@
-$("div.row.collapse").first().html("<%= j(render partial: 'highest_bid', locals: {item: @item}) %>")
+$("div.row.collapse").first().html("<%= j(render partial: 'bids/highest_bid', locals: {item: @item}) %>")
 $("form").html("<%= j(render partial: 'items/bid_form', locals: {bid: @bid}) %>")

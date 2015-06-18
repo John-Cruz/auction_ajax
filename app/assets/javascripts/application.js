@@ -15,22 +15,13 @@
 //= require foundation
 //= require_tree .
 
-// window.setInterval('ajaxCall()', 5000);
+window.setInterval('ajaxCall()', 15000);
 
 function ajaxCall() {
   response = $.ajax({
-    url: "http://localhost:3000/items/2",
+    url: "http://localhost:3000/refresh/",
   });
-
-  var box = $("div.row.collapse",response.responseText)[0];
-
-  var highestBid = $("div div input#nothing", box[0]);
-
-
-  $("div div input#nothing")[0].html(highestBid);
 }
-
-
 
 $(function() {
   $(document).foundation();
