@@ -43,7 +43,7 @@
         <div class="row">
           <% @items.each do |item| %>
             <div class="large-4 small-6 columns">
-              <%= link_to(image_tag(item.image_url, size: "200x160"), item, class: "th [radius]") %>
+              <%= link_to(image_tag(item.image_url, class: "thumbnail"), item, class: "th [radius]") %>
               <div class="panel">
                 <h5><%= item.name %></h5>
                 <h6 class="subheader">Starting price: <%= number_to_currency(item.starting_price) %></h6>
