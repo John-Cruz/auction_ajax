@@ -1,35 +1,96 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Items</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Starting Price</th>
-      <th>Highest Bid</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @items.each do |item| %>
-      <tr>
-        <td><%= image_tag item.image_url, class: "thumbnail" %></td>
-        <td><%= item.name %></td>
-        <td><%= item.description %></td>
-        <td><%= number_to_currency(item.starting_price) %></td>
-        <td><%= number_to_currency(item.highest_bid_amount) %></td>
-        <td><%= link_to 'Bid!', item, class: "button tiny" %></td>
-        <td><%= link_to 'Edit', edit_item_path(item), class: "button tiny" %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' }, class: "button tiny alert" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Item', new_item_path, class: "button tiny success" %>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="row">
+      <div class="large-12 columns">
+        <nav class="top-bar" data-topbar>
+          <ul class="title-area">
+            <li class="name">
+              <h1>
+                <a href="#">
+                  Alpaca Bay
+                </a>
+              </h1>
+            </li>
+            <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+          </ul>
+          <section class="top-bar-section">
+            <ul class="right">
+              <li class="divider"></li>
+                <%= link_to 'New Item', new_item_path, class: "button tiny success" %>
+            </ul>
+          </section>
+        </nav>
+        <br>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-4 small-12 columns">
+         <img src="https://avatars1.githubusercontent.com/u/8742021?v=3&s=400">
+         <div class="hide-for-small panel">
+           <h3>Alpaca Bay</h3>
+           <h5 class="subheader">Where you can buy Alpacas and really anything else anyone is willing to sell.
+             Well not anything, only things that are legal to sell.  So maybe you can't buy Alpacas...we need to check with
+             legal about that.
+           </h5>
+         </div>
+         <a href="#">
+         <div class="panel callout radius">
+           <h6>99  items in your cart, but an Alpaca ain't one</h6>
+         </div>
+         </a>
+      </div>
+      <div class="large-8 columns">
+        <div class="row">
+          <% @items.each do |item| %>
+            <div class="large-4 small-6 columns">
+              <%= link_to(image_tag(item.image_url, size: "200x160"), item, class: "th [radius]") %>
+              <div class="panel">
+                <h5><%= item.name %></h5>
+                <h6 class="subheader">Starting price: <%= number_to_currency(item.starting_price) %></h6>
+                <h6 class="subheader">Current bid: <%= number_to_currency(item.highest_bid_amount) %></h6>
+                <h6 class="subheader">
+                  <div>
+                    <span>
+                      <%= link_to 'Bid!', item, class: "button tiny" %> |
+                      <%= link_to 'Edit', edit_item_path(item), class: "button tiny" %>
+                    </span>
+                  </div>
+                    <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' }, class: "button tiny alert" %>
+                </h6>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="row">
+          <div class="large-12 columns">
+            <div class="panel">
+              <div class="row">
+                <div class="large-2 small-6 columns">
+                  <img src="https://avatars0.githubusercontent.com/u/12955373?v=3&s=200">
+                </div>
+                <div class="large-10 small-6 columns">
+                  <strong>This Site Is Managed By John-Cruz<hr/></strong>
+                  We reintermediate user-centric channels that leverage impactful web-readiness. Also Ruby on Rails.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="row">
+      <div class="large-12 columns"><hr/>
+        <div class="row">
+          <div class="large-6 columns">
+            <p>© Copyright no one at all.</p>
+          </div>
+          <div class="large-6 columns">
+            <ul class="inline-list right">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>
