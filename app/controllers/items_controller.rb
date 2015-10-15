@@ -15,7 +15,6 @@ class ItemsController < ApplicationController
   # GET /items/1
   def show
     @bid = Bid.new(item: @item, amount: @item.next_bid_amount)
-    # params[:id] = @item.id
   end
 
   # GET /items/new
