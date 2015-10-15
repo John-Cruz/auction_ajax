@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
   end
 
   def refresh
-    @item = Item.find(session[:item_id])
+    @item = Item.find(params[:id])
     @bid = Bid.new(item: @item, amount: @item.next_bid_amount)
     render "bids/create"
   end
@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
   # GET /items/1
   def show
     @bid = Bid.new(item: @item, amount: @item.next_bid_amount)
-    session[:item_id] = @item.id
+    # params[:id] = @item.id
   end
 
   # GET /items/new
@@ -61,6 +61,6 @@ class ItemsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def item_params
-      params.require(:item).permit(:name, :description, :starting_price, :image_url)
+      params.require(:item).permit(:name, :description, :starting_price, :image_url, :id)
     end
 end

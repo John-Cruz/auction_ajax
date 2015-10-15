@@ -15,14 +15,16 @@
 //= require foundation
 //= require_tree .
 
-window.setInterval('ajaxCall()', 15000);
-
 function ajaxCall() {
+  var id = $("input[type=hidden]").last().val()
   response = $.ajax({
-    url: "http://localhost:3000/refresh/",
+    url: "/refresh/"+id,
   });
 }
 
 $(function() {
+  if ($("#bid-refresh").length > 0){
+    window.setInterval('ajaxCall()', 15000);
+  }
   $(document).foundation();
 });
